@@ -8,11 +8,13 @@
 
 import UIKit
 
-class GJContactsViewController: UIViewController {
-
+class GJContactsViewController: UIViewController, GJContactsViewProtocol {
+  var presenter: GJContactsPresenterProtocol?
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
+    self.formatPayload(with: .RequestMethodGET)
+    self.presenter?.fetchContactsInformation()
   }
 
   override func didReceiveMemoryWarning() {
@@ -20,6 +22,13 @@ class GJContactsViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
 
+  func showContactsInformation(with info: [GJContactInfo]){
+    print("Contacts info fetched is \(info)")
+  }
 
+  func removeActivityView() {
+    
+  }
 }
 
+extension UIViewController: PayLoadFormat{}

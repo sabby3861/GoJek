@@ -66,11 +66,11 @@ extension JSONParser {
 }
 
 struct GJContactService {
-  let service = JSONParser<GJResponse>(url: ServiceURL.ContactsService, parseJSON: { json in
+  let service = JSONParser<[GJContactInfo]>(url: ServiceURL.ContactsService, parseJSON: { json in
     guard let data = json as? Data else {
       throw APIError.message("Unable to deconde the response")
     }
-    return  try  JSONDecoder().decode(GJResponse.self, from: data)
+    return  try  JSONDecoder().decode([GJContactInfo].self, from: data)
   })
 }
 
@@ -83,12 +83,6 @@ enum ServiceURL {
   }
 }
   
-
-
-/// Codable Protocol for response
-struct GJResponse : Codable {
-  let placemarks: [GJContactInfo]
-}
 
 /// Placemarks info
 struct GJContactInfo : Codable {

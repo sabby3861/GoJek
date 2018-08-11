@@ -8,7 +8,7 @@
 
 import Foundation
 protocol PayLoadFormat {
-  func formatGetPayload()
+  func formatPayload(with method: GJHTTPPayloadType)
 }
 extension PayLoadFormat{
   func formatPayload(with method: GJHTTPPayloadType) {
@@ -36,7 +36,6 @@ struct GJHTTPPayload {
 
 enum GJHTTPMimeType: String {
   case applicationJSON = "application/json; charset=utf-8"
-  case key = "intervIEW_TOK3n"
 }
 enum GJHTTPHeaderType: String{
   case contentType    = "Content-Type"
