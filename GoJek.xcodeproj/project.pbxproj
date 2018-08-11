@@ -14,6 +14,8 @@
 		929F9D64211EA95C0066BC69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 929F9D62211EA95C0066BC69 /* LaunchScreen.storyboard */; };
 		929F9D6F211EA95C0066BC69 /* GoJekTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F9D6E211EA95C0066BC69 /* GoJekTests.swift */; };
 		929F9D7A211EA95C0066BC69 /* GoJekUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F9D79211EA95C0066BC69 /* GoJekUITests.swift */; };
+		929F9D89211EAE820066BC69 /* GJJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F9D88211EAE820066BC69 /* GJJSONParser.swift */; };
+		929F9D8B211F05060066BC69 /* GJPayLoadHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F9D8A211F05060066BC69 /* GJPayLoadHeaders.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		929F9D75211EA95C0066BC69 /* GoJekUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoJekUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		929F9D79211EA95C0066BC69 /* GoJekUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoJekUITests.swift; sourceTree = "<group>"; };
 		929F9D7B211EA95C0066BC69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		929F9D88211EAE820066BC69 /* GJJSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GJJSONParser.swift; sourceTree = "<group>"; };
+		929F9D8A211F05060066BC69 /* GJPayLoadHeaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GJPayLoadHeaders.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 			children = (
 				929F9D59211EA95A0066BC69 /* AppDelegate.swift */,
 				929F9D5B211EA95A0066BC69 /* GJContactsViewController.swift */,
+				929F9D87211EAE820066BC69 /* Entity */,
 				929F9D5D211EA95A0066BC69 /* Main.storyboard */,
 				929F9D60211EA95C0066BC69 /* Assets.xcassets */,
 				929F9D62211EA95C0066BC69 /* LaunchScreen.storyboard */,
@@ -123,6 +128,15 @@
 				929F9D7B211EA95C0066BC69 /* Info.plist */,
 			);
 			path = GoJekUITests;
+			sourceTree = "<group>";
+		};
+		929F9D87211EAE820066BC69 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				929F9D88211EAE820066BC69 /* GJJSONParser.swift */,
+				929F9D8A211F05060066BC69 /* GJPayLoadHeaders.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +270,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				929F9D89211EAE820066BC69 /* GJJSONParser.swift in Sources */,
 				929F9D5C211EA95A0066BC69 /* GJContactsViewController.swift in Sources */,
 				929F9D5A211EA95A0066BC69 /* AppDelegate.swift in Sources */,
+				929F9D8B211F05060066BC69 /* GJPayLoadHeaders.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
