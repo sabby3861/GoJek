@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		929F9D5A211EA95A0066BC69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F9D59211EA95A0066BC69 /* AppDelegate.swift */; };
-		929F9D5C211EA95A0066BC69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F9D5B211EA95A0066BC69 /* ViewController.swift */; };
+		929F9D5C211EA95A0066BC69 /* GJContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F9D5B211EA95A0066BC69 /* GJContactsViewController.swift */; };
 		929F9D5F211EA95A0066BC69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 929F9D5D211EA95A0066BC69 /* Main.storyboard */; };
 		929F9D61211EA95C0066BC69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 929F9D60211EA95C0066BC69 /* Assets.xcassets */; };
 		929F9D64211EA95C0066BC69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 929F9D62211EA95C0066BC69 /* LaunchScreen.storyboard */; };
@@ -36,7 +36,7 @@
 /* Begin PBXFileReference section */
 		929F9D56211EA95A0066BC69 /* GoJek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoJek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		929F9D59211EA95A0066BC69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		929F9D5B211EA95A0066BC69 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		929F9D5B211EA95A0066BC69 /* GJContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJContactsViewController.swift; sourceTree = "<group>"; };
 		929F9D5E211EA95A0066BC69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		929F9D60211EA95C0066BC69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		929F9D63211EA95C0066BC69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				929F9D59211EA95A0066BC69 /* AppDelegate.swift */,
-				929F9D5B211EA95A0066BC69 /* ViewController.swift */,
+				929F9D5B211EA95A0066BC69 /* GJContactsViewController.swift */,
 				929F9D5D211EA95A0066BC69 /* Main.storyboard */,
 				929F9D60211EA95C0066BC69 /* Assets.xcassets */,
 				929F9D62211EA95C0066BC69 /* LaunchScreen.storyboard */,
@@ -256,7 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				929F9D5C211EA95A0066BC69 /* ViewController.swift in Sources */,
+				929F9D5C211EA95A0066BC69 /* GJContactsViewController.swift in Sources */,
 				929F9D5A211EA95A0066BC69 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GJContactsViewController.swift
 //  GoJek
 //
 //  Created by sanjay on 11/08/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class GJContactsViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
