@@ -26,10 +26,10 @@ struct GJHTTPPayload {
   var type: GJHTTPPayloadType!
   var headers = Dictionary<String, String>()
   
-  init(payloadType: GJHTTPPayloadType) {
+  fileprivate init(payloadType: GJHTTPPayloadType) {
     self.type = payloadType
   }
-  mutating func addHeader(name: String, value: String) {
+  fileprivate mutating func addHeader(name: String, value: String) {
     headers[name] = value
   }
 }
