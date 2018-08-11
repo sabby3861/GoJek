@@ -16,6 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+    let navigationController = self.window?.rootViewController as? UINavigationController
+    let homeViewController = navigationController?.viewControllers.first as? GJContactsViewController
+    GJContactsRouter.assembleModule(view: homeViewController!)
+    
+    navigationController?.navigationBar.barTintColor = UIColor(red: 55/255, green: 142/255, blue: 41/255, alpha: 1.0)
     return true
   }
 

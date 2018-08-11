@@ -8,14 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		929F9D5A211EA95A0066BC69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F9D59211EA95A0066BC69 /* AppDelegate.swift */; };
-		929F9D5C211EA95A0066BC69 /* GJContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F9D5B211EA95A0066BC69 /* GJContactsViewController.swift */; };
 		929F9D5F211EA95A0066BC69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 929F9D5D211EA95A0066BC69 /* Main.storyboard */; };
 		929F9D61211EA95C0066BC69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 929F9D60211EA95C0066BC69 /* Assets.xcassets */; };
 		929F9D64211EA95C0066BC69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 929F9D62211EA95C0066BC69 /* LaunchScreen.storyboard */; };
 		929F9D6F211EA95C0066BC69 /* GoJekTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F9D6E211EA95C0066BC69 /* GoJekTests.swift */; };
 		929F9D7A211EA95C0066BC69 /* GoJekUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F9D79211EA95C0066BC69 /* GoJekUITests.swift */; };
-		929F9D89211EAE820066BC69 /* GJJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F9D88211EAE820066BC69 /* GJJSONParser.swift */; };
-		929F9D8B211F05060066BC69 /* GJPayLoadHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F9D8A211F05060066BC69 /* GJPayLoadHeaders.swift */; };
+		929F9DAB211F1A6F0066BC69 /* GJPayLoadHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F9D9F211F1A6F0066BC69 /* GJPayLoadHeaders.swift */; };
+		929F9DAC211F1A6F0066BC69 /* GJJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F9DA0211F1A6F0066BC69 /* GJJSONParser.swift */; };
+		929F9DAD211F1A6F0066BC69 /* GJContactsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F9DA2211F1A6F0066BC69 /* GJContactsPresenter.swift */; };
+		929F9DAE211F1A6F0066BC69 /* GJContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F9DA4211F1A6F0066BC69 /* GJContactsViewController.swift */; };
+		929F9DAF211F1A6F0066BC69 /* GJContactsViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F9DA6211F1A6F0066BC69 /* GJContactsViewProtocols.swift */; };
+		929F9DB0211F1A6F0066BC69 /* GJContactsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F9DA8211F1A6F0066BC69 /* GJContactsInteractor.swift */; };
+		929F9DB1211F1A6F0066BC69 /* GJHomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F9DAA211F1A6F0066BC69 /* GJHomeRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +42,6 @@
 /* Begin PBXFileReference section */
 		929F9D56211EA95A0066BC69 /* GoJek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoJek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		929F9D59211EA95A0066BC69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		929F9D5B211EA95A0066BC69 /* GJContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJContactsViewController.swift; sourceTree = "<group>"; };
 		929F9D5E211EA95A0066BC69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		929F9D60211EA95C0066BC69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		929F9D63211EA95C0066BC69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,8 +52,13 @@
 		929F9D75211EA95C0066BC69 /* GoJekUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoJekUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		929F9D79211EA95C0066BC69 /* GoJekUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoJekUITests.swift; sourceTree = "<group>"; };
 		929F9D7B211EA95C0066BC69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		929F9D88211EAE820066BC69 /* GJJSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GJJSONParser.swift; sourceTree = "<group>"; };
-		929F9D8A211F05060066BC69 /* GJPayLoadHeaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GJPayLoadHeaders.swift; sourceTree = "<group>"; };
+		929F9D9F211F1A6F0066BC69 /* GJPayLoadHeaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GJPayLoadHeaders.swift; sourceTree = "<group>"; };
+		929F9DA0211F1A6F0066BC69 /* GJJSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GJJSONParser.swift; sourceTree = "<group>"; };
+		929F9DA2211F1A6F0066BC69 /* GJContactsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GJContactsPresenter.swift; sourceTree = "<group>"; };
+		929F9DA4211F1A6F0066BC69 /* GJContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GJContactsViewController.swift; sourceTree = "<group>"; };
+		929F9DA6211F1A6F0066BC69 /* GJContactsViewProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GJContactsViewProtocols.swift; sourceTree = "<group>"; };
+		929F9DA8211F1A6F0066BC69 /* GJContactsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GJContactsInteractor.swift; sourceTree = "<group>"; };
+		929F9DAA211F1A6F0066BC69 /* GJHomeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GJHomeRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,8 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				929F9D59211EA95A0066BC69 /* AppDelegate.swift */,
-				929F9D5B211EA95A0066BC69 /* GJContactsViewController.swift */,
-				929F9D87211EAE820066BC69 /* Entity */,
+				929F9D9D211F1A6F0066BC69 /* Contact View (VIPER) */,
 				929F9D5D211EA95A0066BC69 /* Main.storyboard */,
 				929F9D60211EA95C0066BC69 /* Assets.xcassets */,
 				929F9D62211EA95C0066BC69 /* LaunchScreen.storyboard */,
@@ -130,13 +137,66 @@
 			path = GoJekUITests;
 			sourceTree = "<group>";
 		};
-		929F9D87211EAE820066BC69 /* Entity */ = {
+		929F9D9D211F1A6F0066BC69 /* Contact View (VIPER) */ = {
 			isa = PBXGroup;
 			children = (
-				929F9D88211EAE820066BC69 /* GJJSONParser.swift */,
-				929F9D8A211F05060066BC69 /* GJPayLoadHeaders.swift */,
+				929F9DA5211F1A6F0066BC69 /* Protocols */,
+				929F9DA3211F1A6F0066BC69 /* View */,
+				929F9DA1211F1A6F0066BC69 /* Presenter */,
+				929F9DA7211F1A6F0066BC69 /* Interactor */,
+				929F9DA9211F1A6F0066BC69 /* Router */,
+				929F9D9E211F1A6F0066BC69 /* Entity */,
+			);
+			path = "Contact View (VIPER)";
+			sourceTree = "<group>";
+		};
+		929F9D9E211F1A6F0066BC69 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				929F9D9F211F1A6F0066BC69 /* GJPayLoadHeaders.swift */,
+				929F9DA0211F1A6F0066BC69 /* GJJSONParser.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		929F9DA1211F1A6F0066BC69 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				929F9DA2211F1A6F0066BC69 /* GJContactsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		929F9DA3211F1A6F0066BC69 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				929F9DA4211F1A6F0066BC69 /* GJContactsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		929F9DA5211F1A6F0066BC69 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				929F9DA6211F1A6F0066BC69 /* GJContactsViewProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		929F9DA7211F1A6F0066BC69 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				929F9DA8211F1A6F0066BC69 /* GJContactsInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		929F9DA9211F1A6F0066BC69 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				929F9DAA211F1A6F0066BC69 /* GJHomeRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,10 +330,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				929F9D89211EAE820066BC69 /* GJJSONParser.swift in Sources */,
-				929F9D5C211EA95A0066BC69 /* GJContactsViewController.swift in Sources */,
+				929F9DB1211F1A6F0066BC69 /* GJHomeRouter.swift in Sources */,
+				929F9DB0211F1A6F0066BC69 /* GJContactsInteractor.swift in Sources */,
+				929F9DAF211F1A6F0066BC69 /* GJContactsViewProtocols.swift in Sources */,
+				929F9DAD211F1A6F0066BC69 /* GJContactsPresenter.swift in Sources */,
+				929F9DAE211F1A6F0066BC69 /* GJContactsViewController.swift in Sources */,
+				929F9DAB211F1A6F0066BC69 /* GJPayLoadHeaders.swift in Sources */,
 				929F9D5A211EA95A0066BC69 /* AppDelegate.swift in Sources */,
-				929F9D8B211F05060066BC69 /* GJPayLoadHeaders.swift in Sources */,
+				929F9DAC211F1A6F0066BC69 /* GJJSONParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
