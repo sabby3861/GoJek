@@ -26,10 +26,9 @@ class GJContactInfoCell: UITableViewCell {
   
   /// Display data on table view cell
   ///
-  /// - Parameter data: WUPlaceMark containing all info
+  /// - Parameter data: GJContactInfo containing all info
   func displayData(data: GJContactInfo) {
     nameLabel.text = data.firstName + " " + data.lastName
-    //routeLabel.text = data.station
     starImageView.isHidden = !data.favorite
     guard data.profilePic != nil else {
       return

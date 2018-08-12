@@ -34,22 +34,22 @@
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="QaQ-u0-Z1K">
-                        <rect key="frame" x="339" y="24.5" width="23" height="16"/>
+                        <rect key="frame" x="339" y="21.5" width="22" height="22"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="23" id="HlT-vY-ZtY"/>
-                            <constraint firstAttribute="height" constant="16" id="ZJg-Xx-v77"/>
+                            <constraint firstAttribute="width" constant="22" id="HlT-vY-ZtY"/>
+                            <constraint firstAttribute="height" constant="22" id="ZJg-Xx-v77"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="dsb-b6-fy8" firstAttribute="centerY" secondItem="Bsb-XA-cVl" secondAttribute="centerY" id="2pW-vC-t5f"/>
-                    <constraint firstItem="QaQ-u0-Z1K" firstAttribute="centerY" secondItem="Bsb-XA-cVl" secondAttribute="centerY" id="6hQ-DR-QlP"/>
+                    <constraint firstItem="QaQ-u0-Z1K" firstAttribute="centerY" secondItem="Bsb-XA-cVl" secondAttribute="centerY" constant="0.25" id="6hQ-DR-QlP"/>
                     <constraint firstItem="pAJ-m2-qHr" firstAttribute="top" secondItem="Bsb-XA-cVl" secondAttribute="topMargin" constant="14" id="bLU-95-Nwc"/>
                     <constraint firstItem="dsb-b6-fy8" firstAttribute="leading" secondItem="Bsb-XA-cVl" secondAttribute="leading" constant="10" id="cWI-YA-9vN"/>
                     <constraint firstItem="QaQ-u0-Z1K" firstAttribute="leading" secondItem="pAJ-m2-qHr" secondAttribute="trailing" constant="20" id="f5l-2d-LQJ"/>
                     <constraint firstItem="pAJ-m2-qHr" firstAttribute="leading" secondItem="dsb-b6-fy8" secondAttribute="trailing" constant="26" id="fYw-tC-T0J"/>
-                    <constraint firstAttribute="trailing" secondItem="QaQ-u0-Z1K" secondAttribute="trailing" constant="13" id="som-mY-7aO"/>
+                    <constraint firstAttribute="trailing" secondItem="QaQ-u0-Z1K" secondAttribute="trailing" constant="14" id="som-mY-7aO"/>
                     <constraint firstAttribute="bottomMargin" secondItem="pAJ-m2-qHr" secondAttribute="bottom" constant="13" id="zQJ-fZ-iSV"/>
                 </constraints>
             </tableViewCellContentView>
