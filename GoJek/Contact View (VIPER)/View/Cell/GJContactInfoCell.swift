@@ -2,8 +2,8 @@
 //  WUCarInfoCell.swift
 //  WeSerVite
 //
-//  Created by sanjay on 05/08/18.
-//  Copyright © 2017 sanjay chauhan. All rights reserved.
+//  Created by sanjay on 12/08/18.
+//  Copyright © 2018 sanjay chauhan. All rights reserved.
 //
 
 import UIKit
@@ -28,7 +28,7 @@ class GJContactInfoCell: UITableViewCell {
   ///
   /// - Parameter data: GJContactInfo containing all info
   func displayData(data: GJContactInfo) {
-    nameLabel.text = data.firstName + " " + data.lastName
+    nameLabel.text = data.firstName! + " " + data.lastName!
     starImageView.isHidden = !data.favorite
     guard data.profilePic != nil else {
       return

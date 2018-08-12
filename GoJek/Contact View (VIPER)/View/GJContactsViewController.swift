@@ -38,8 +38,8 @@ class GJContactsViewController: UIViewController, GJContactsViewProtocol {
     
     // 1
     for contact in self.contacts {
-      let firstName = contact.firstName.trimmingCharacters(in: .whitespaces)
-      let carKey = String(firstName.prefix(1))
+      let firstName = contact.firstName?.trimmingCharacters(in: .whitespaces)
+      let carKey = String(firstName!.prefix(1))
       if var carValues = contactsDictionary[carKey] {
         carValues.append(contact)
         contactsDictionary[carKey] = carValues

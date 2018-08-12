@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+
 class GJContactsInteractor: GJContactsInteractorProtocol {
   var output: GJContactsOutputProtocol?
   
@@ -18,13 +20,26 @@ class GJContactsInteractor: GJContactsInteractorProtocol {
       switch result {
       case .success(let data):
         print("Data is \(data)")
+        self.saveToCoreData()
         self.output?.contactInfoDidFetch(contactsInfo: data)
       case .failure(let missing):
         let error = missing.localizedDescription
         print("Description  \(error)")
-        //FBAlertViewController.showAlert(withTitle: "Error", message:  String(describing: missing))
+        DispatchQueue.main.async {
+          GJAlertViewController.showAlert(withTitle: "Error", message:  String(describing: missing))
+        }
       }
     }
   }
   
+  func saveToCoreData() {
+    do {
+      let appDelegate = UIApplication.shared.delegate as! AppDelegate
+      let managedObjectContext = appDelegate.persistentContainer.viewContext
+      try managedObjectContext.save()
+    }
+    catch let error {
+      print(error)
+    }
+  }
 }

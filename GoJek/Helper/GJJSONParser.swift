@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
+
 enum APIError: Error {
   case message(String)
   
@@ -70,7 +73,18 @@ struct GJContactService {
     guard let data = json as? Data else {
       throw APIError.message("Unable to deconde the response")
     }
-    return  try  JSONDecoder().decode([GJContactInfo].self, from: data)
+    guard let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.managedObjectContext else {
+      fatalError("Failed to retrieve managed object context")
+    }
+    // Parse JSON data
+    var managedObjectContext: NSManagedObjectContext?
+    DispatchQueue.main.async {
+      var appDelegate = UIApplication.shared.delegate as! AppDelegate
+      managedObjectContext = appDelegate.persistentContainer.viewContext
+    }
+    let decoder = JSONDecoder()
+    decoder.userInfo[codingUserInfoKeyManagedObjectContext] = managedObjectContext!
+    return  try  decoder.decode([GJContactInfo].self, from: data)
   })
 }
 
@@ -80,24 +94,5 @@ enum ServiceURL {
     switch self {
     case .ContactsService: return URL(string: "\(baseUrl)/contacts.json")!;
     }
-  }
-}
-  
-
-/// Placemarks info
-struct GJContactInfo : Codable {
-  let contactId: Int
-  let firstName: String
-  let lastName: String
-  let profilePic: String?
-  let favorite: Bool
-  let url: String
-  enum CodingKeys: String, CodingKey {
-    case contactId = "id"
-    case firstName = "first_name"
-    case lastName = "last_name"
-    case profilePic = "profile_pic"
-    case favorite = "favorite"
-    case url = "url"
   }
 }
