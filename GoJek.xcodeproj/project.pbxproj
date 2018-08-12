@@ -28,6 +28,8 @@
 		929F9DBF212022360066BC69 /* GJImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F9DBE212022360066BC69 /* GJImageCache.swift */; };
 		929F9DC221202F7B0066BC69 /* GoJek.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 929F9DC021202F7B0066BC69 /* GoJek.xcdatamodeld */; };
 		92A6174C2120353D00103776 /* GJContactInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A6174B2120353D00103776 /* GJContactInfo.swift */; };
+		92A6174E21205E7800103776 /* GJImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A6174D21205E7800103776 /* GJImageView.swift */; };
+		92F3B969212070D5004B3613 /* GJContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F3B968212070D4004B3613 /* GJContactDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		929F9DBE212022360066BC69 /* GJImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJImageCache.swift; sourceTree = "<group>"; };
 		929F9DC121202F7B0066BC69 /* GoJek.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoJek.xcdatamodel; sourceTree = "<group>"; };
 		92A6174B2120353D00103776 /* GJContactInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJContactInfo.swift; sourceTree = "<group>"; };
+		92A6174D21205E7800103776 /* GJImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJImageView.swift; sourceTree = "<group>"; };
+		92F3B968212070D4004B3613 /* GJContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJContactDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				929F9D59211EA95A0066BC69 /* AppDelegate.swift */,
+				92A6174D21205E7800103776 /* GJImageView.swift */,
+				92F3B968212070D4004B3613 /* GJContactDetailViewController.swift */,
 				929F9DB2212005160066BC69 /* Helper */,
 				929F9D9D211F1A6F0066BC69 /* Contact View (VIPER) */,
 				929F9D5D211EA95A0066BC69 /* Main.storyboard */,
@@ -171,7 +177,6 @@
 		929F9D9E211F1A6F0066BC69 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				929F9D9F211F1A6F0066BC69 /* GJPayLoadHeaders.swift */,
 				92A6174B2120353D00103776 /* GJContactInfo.swift */,
 			);
 			path = Entity;
@@ -226,6 +231,7 @@
 				929F9DB5212005160066BC69 /* GJStoryBoard.swift */,
 				929F9DBE212022360066BC69 /* GJImageCache.swift */,
 				929F9DA0211F1A6F0066BC69 /* GJJSONParser.swift */,
+				929F9D9F211F1A6F0066BC69 /* GJPayLoadHeaders.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -382,9 +388,11 @@
 				929F9DAE211F1A6F0066BC69 /* GJContactsViewController.swift in Sources */,
 				929F9DC221202F7B0066BC69 /* GoJek.xcdatamodeld in Sources */,
 				929F9DAB211F1A6F0066BC69 /* GJPayLoadHeaders.swift in Sources */,
+				92A6174E21205E7800103776 /* GJImageView.swift in Sources */,
 				929F9DBD212006890066BC69 /* GJContactInfoCell.swift in Sources */,
 				929F9DB7212005160066BC69 /* GJTableView.swift in Sources */,
 				929F9D5A211EA95A0066BC69 /* AppDelegate.swift in Sources */,
+				92F3B969212070D5004B3613 /* GJContactDetailViewController.swift in Sources */,
 				929F9DAC211F1A6F0066BC69 /* GJJSONParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

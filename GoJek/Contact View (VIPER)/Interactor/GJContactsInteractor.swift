@@ -7,16 +7,22 @@
 //
 
 import Foundation
+import CoreData
 import UIKit
 
 class GJContactsInteractor: GJContactsInteractorProtocol {
   var output: GJContactsOutputProtocol?
-  
   func decodeJSONInformation(){
+    guard let data = fetchFromStorage() else {
+      return
+    }
+    self.output?.contactInfoDidFetch(contactsInfo: data)
+  }
+  
+  func startDownloadingContacts() {
     let parser = GJJSONParser()
     let service = GJContactService()
     parser.request(resource: service.service) { [unowned self] result in
-      //print("Result Is \(result)")
       switch result {
       case .success(let data):
         print("Data is \(data)")
@@ -34,12 +40,30 @@ class GJContactsInteractor: GJContactsInteractorProtocol {
   
   func saveToCoreData() {
     do {
-      let appDelegate = UIApplication.shared.delegate as! AppDelegate
+      let appDelegate = getAppDelegate()
       let managedObjectContext = appDelegate.persistentContainer.viewContext
       try managedObjectContext.save()
     }
     catch let error {
       print(error)
     }
+  }
+  
+  func fetchFromStorage() -> [GJContactInfo]? {
+    let delegate = getAppDelegate()
+    let managedObjectContext = delegate.persistentContainer.viewContext
+    let fetchRequest = NSFetchRequest<GJContactInfo>(entityName: GJCoreData.name.rawValue)
+    do {
+      let contacts = try managedObjectContext.fetch(fetchRequest)
+      return contacts
+    } catch let error {
+      print(error)
+      return nil
+    }
+  }
+  
+  func getAppDelegate() -> AppDelegate {
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    return appDelegate
   }
 }

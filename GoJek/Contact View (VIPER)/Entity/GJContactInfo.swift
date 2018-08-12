@@ -37,7 +37,7 @@ class GJContactInfo : NSManagedObject, Codable {
   required convenience init(from decoder: Decoder) throws {
     guard let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.managedObjectContext,
       let managedObjectContext = decoder.userInfo[codingUserInfoKeyManagedObjectContext] as? NSManagedObjectContext,
-      let entity = NSEntityDescription.entity(forEntityName: "GJContacts", in: managedObjectContext) else {
+      let entity = NSEntityDescription.entity(forEntityName: GJCoreData.name.rawValue, in: managedObjectContext) else {
         fatalError("Failed to decode User")
     }
     
@@ -70,3 +70,8 @@ public extension CodingUserInfoKey {
   // Helper property to retrieve the Core Data managed object context
   static let managedObjectContext = CodingUserInfoKey(rawValue: "managedObjectContext")
 }
+
+enum GJCoreData: String {
+  case name = "GJContactInfo"
+}
+

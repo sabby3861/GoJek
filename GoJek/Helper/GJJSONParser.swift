@@ -78,9 +78,12 @@ struct GJContactService {
     }
     // Parse JSON data
     var managedObjectContext: NSManagedObjectContext?
+    let group = DispatchGroup()
+    group.enter()
     DispatchQueue.main.async {
       var appDelegate = UIApplication.shared.delegate as! AppDelegate
       managedObjectContext = appDelegate.persistentContainer.viewContext
+      group.leave()
     }
     let decoder = JSONDecoder()
     decoder.userInfo[codingUserInfoKeyManagedObjectContext] = managedObjectContext!
