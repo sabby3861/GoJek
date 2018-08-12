@@ -17,38 +17,6 @@
             endingLineNumber = "16"
             landmarkName = "decodeJSONInformation()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GoJek.GJContactsInteractor.decodeJSONInformation() -&gt; ()"
-                  moduleName = "GoJek"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanjay/Documents/GoJek/GoJek/Entity/Interactor/GJContactsInteractor.swift"
-                  timestampString = "555683642.896937"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "38">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (GoJek.Result&lt;GoJek.GJResponse&gt;) -&gt; () in GoJek.GJContactsInteractor.decodeJSONInformation() -&gt; ()"
-                  moduleName = "GoJek"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanjay/Documents/GoJek/GoJek/Entity/Interactor/GJContactsInteractor.swift"
-                  timestampString = "555683642.903605"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -97,38 +65,6 @@
             endingLineNumber = "62"
             landmarkName = "init(url:parseJSON:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GoJek.JSONParser.init(url: GoJek.ServiceURL, parseJSON: (Any) throws -&gt; A) -&gt; GoJek.JSONParser&lt;A&gt;"
-                  moduleName = "GoJek"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanjay/Documents/GoJek/GoJek/Entity/GJJSONParser.swift"
-                  timestampString = "555683642.988567"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62"
-                  offsetFromSymbolStart = "628">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Foundation.Data) throws -&gt; A in GoJek.JSONParser.init(url: GoJek.ServiceURL, parseJSON: (Any) throws -&gt; A) -&gt; GoJek.JSONParser&lt;A&gt;"
-                  moduleName = "GoJek"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanjay/Documents/GoJek/GoJek/Entity/GJJSONParser.swift"
-                  timestampString = "555683642.991479"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "40">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -225,6 +161,38 @@
             endingLineNumber = "73"
             landmarkName = "service"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoJek/Contact View (VIPER)/View/GJContactsViewController.swift"
+            timestampString = "555755963.380476"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "showContactsInformation(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoJek/Contact View (VIPER)/View/GJContactsViewController.swift"
+            timestampString = "555755963.380578"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "showContactsInformation(with:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

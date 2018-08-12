@@ -89,7 +89,7 @@ struct GJContactInfo : Codable {
   let contactId: Int
   let firstName: String
   let lastName: String
-  let profilePic: String
+  let profilePic: String?
   let favorite: Bool
   let url: String
   enum CodingKeys: String, CodingKey {

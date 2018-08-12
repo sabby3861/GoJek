@@ -18,7 +18,7 @@ class GJContactsInteractor: GJContactsInteractorProtocol {
       switch result {
       case .success(let data):
         print("Data is \(data)")
-        //self.output?.busInfoDidFetch(busInfo: data.timetable)
+        self.output?.contactInfoDidFetch(contactsInfo: data)
       case .failure(let missing):
         let error = missing.localizedDescription
         print("Description  \(error)")

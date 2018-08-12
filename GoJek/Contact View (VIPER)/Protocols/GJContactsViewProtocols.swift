@@ -35,7 +35,7 @@ protocol GJContactsInteractorProtocol: class
 
 protocol GJContactsOutputProtocol: class
 {
-  func contactInfoDidFetch(busInfo: [GJContactInfo])
+  func contactInfoDidFetch(contactsInfo: [GJContactInfo])
   func errorOccured()
 }
 

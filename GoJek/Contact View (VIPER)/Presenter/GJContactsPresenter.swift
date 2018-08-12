@@ -25,8 +25,8 @@ class GJContactsPresenter: GJContactsPresenterProtocol {
 // MARK: - Presenter to view communcation
 extension GJContactsPresenter: GJContactsOutputProtocol{
   
-  func contactInfoDidFetch(busInfo: [GJContactInfo]){
-    view?.showContactsInformation(with: busInfo)
+  func contactInfoDidFetch(contactsInfo: [GJContactInfo]){
+    view?.showContactsInformation(with: contactsInfo)
   }
   func errorOccured(){
     
