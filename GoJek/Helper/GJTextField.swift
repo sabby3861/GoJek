@@ -9,9 +9,7 @@
 import UIKit
 
 enum GJFieldType{
-  case number
   case email
-  case text
   case password
   case telephone
   case userName
