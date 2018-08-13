@@ -24,6 +24,7 @@ class GJContactDetailInteractor: GJContactDeailInteractorProtocol {
       case .failure(let missing):
         let error = missing.localizedDescription
         print("Description  \(error)")
+        self.output?.errorOccured()
         DispatchQueue.main.async {
           GJAlertViewController.showAlert(withTitle: "Error", message:  String(describing: missing))
         }
@@ -31,17 +32,20 @@ class GJContactDetailInteractor: GJContactDeailInteractorProtocol {
     }
   }
   
-  func sendJSONInformation(){
+  func sendJSONInformation(contactId: Int){
     let parser = GJJSONParser()
+    let urlString = "\(baseUrl)/" + "contacts/" + "\(contactId)" + ".json"
+    GJDetailUrl.url =  urlString
     let service = GJContactUpdateService()
     parser.request(resource: service.service) { [unowned self] result in
       switch result {
       case .success(let data):
         print("Data is \(data)")
-        GJAlertViewController.showAlert(withTitle: "Error", message:  "Contact informations has been updated")
+        GJAlertViewController.showAlert(withTitle: "GoJek", message:  "Contact informations has been updated")
       case .failure(let missing):
         let error = missing.localizedDescription
         print("Description  \(error)")
+        self.output?.errorOccured()
         DispatchQueue.main.async {
           GJAlertViewController.showAlert(withTitle: "Error", message:  String(describing: missing))
         }

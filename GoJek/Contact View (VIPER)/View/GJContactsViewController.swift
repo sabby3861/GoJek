@@ -15,11 +15,14 @@ class GJContactsViewController: UIViewController, GJContactsViewProtocol {
   @IBOutlet weak var tableView: GJTableView!
   var contactsDictionary = [String: [GJContactInfo]]()
   var contactsSectionTitles = [String]()
+  var activity: GJActivityView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
     self.formatGetPayload()
+    activity = GJActivityView()
+    activity.showActivityIndicatory(uiView: self.view)
     self.presenter?.fetchContactsInformation()
     assert(self.presenter != nil, "Modules were not assembed correctly")
     
@@ -51,13 +54,18 @@ class GJContactsViewController: UIViewController, GJContactsViewProtocol {
     // 2
     contactsSectionTitles = [String](contactsDictionary.keys)
     contactsSectionTitles = contactsSectionTitles.sorted(by: { $0 < $1 })
-    print("Car sections  \(contactsSectionTitles)")
-    print("carsDictionary Car sections  \(contactsDictionary)")
-    tableView.reloadData()
+    
+    DispatchQueue.main.async {
+      self.activity.removeActivity()
+      self.tableView.reloadData()
+    }
+    
   }
 
   func removeActivityView() {
-    
+    DispatchQueue.main.async {
+      self.activity.removeActivity()
+    }
   }
 }
 

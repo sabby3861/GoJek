@@ -80,7 +80,7 @@ enum GJNumericValidation: String, ValidationPattern {
   public var pattern:String{
     switch self{
     case .phoneNumberWithSpecial:
-      return "^(?:(?:\\+|00)(33|41)|0)\\s*[1-9](?:[\\s.-]*\\d{2}){4}$"
+      return "^((\\+)|(00))[0-9]{6,14}$"//"^[0-9]{8}*$" //"^(?:(?:\\+|00)(33|41)|0)\\s*[1-9](?:[\\s.-]*\\d{2}){4}$"
     case .phoneNumber:
       return "^[0-9+]*$"
     }

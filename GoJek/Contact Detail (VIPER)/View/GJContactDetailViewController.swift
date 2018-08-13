@@ -10,9 +10,10 @@ import UIKit
 import MessageUI
 
 struct GJContactDetailInfo {
-  var key:String
-  var value:String
-  var type:GJFieldType!
+  var key: String
+  var value: String
+  var type: GJFieldType!
+  var jsonKey: String
 }
 
 class GJContactDetailViewController: UIViewController, GJContactDeailViewProtocol {
@@ -23,30 +24,41 @@ class GJContactDetailViewController: UIViewController, GJContactDeailViewProtoco
   var canEdit = false
   var detailView: GJContactDetailVIew?
   var jsonData = [String:String]()
-  
+  var activity: GJActivityView!
   @IBOutlet weak var tableView: GJTableView!
+  
   func showContactsInformation(with info: GJContactDetail) {
     
-    var contactInfo = GJContactDetailInfo(key: "First Name", value: info.firstName, type: .text)
+    var contactInfo = GJContactDetailInfo(key: "First Name", value: info.firstName, type: .userName, jsonKey: "first_name")
     items.append(contactInfo)
-    contactInfo = GJContactDetailInfo(key: "Last Name", value: info.lastName, type: .text)
+    //self.jsonData["First Name"] = info.firstName
+    contactInfo = GJContactDetailInfo(key: "Last Name", value: info.lastName, type: .text, jsonKey: "last_name")
     items.append(contactInfo)
-    contactInfo = GJContactDetailInfo(key: "mobile", value: info.phone != nil ? info.phone! : "", type: .telephone)
+    //self.jsonData["Last Name"] = info.lastName
+    contactInfo = GJContactDetailInfo(key: "mobile", value: info.phone != nil ? info.phone! : "", type: .telephone, jsonKey: "phone_number")
+    //self.jsonData["mobile"] = info.phone
     items.append(contactInfo)
-    contactInfo = GJContactDetailInfo(key: "email", value: info.email != nil ? info.email! : "", type: .email)
+    contactInfo = GJContactDetailInfo(key: "email", value: info.email != nil ? info.email! : "", type: .email, jsonKey: "email")
+    //self.jsonData["email"] = info.email
     items.append(contactInfo)
+    self.contactDetail = info
     DispatchQueue.main.async {
+      self.activity.removeActivity()
       self.tableView.reloadData()
     }
   }
   
   func removeActivityView() {
-    
+    DispatchQueue.main.async {
+      self.activity.removeActivity()
+    }
   }
   
   
   @IBAction func editButtonClicked(_ sender: Any) {
+    self.view.endEditing(true)
     if self.navigationItem.rightBarButtonItem?.title == GJButtonTitle.done.description {
+      updateDataOnSever()
       self.navigationItem.rightBarButtonItem?.title = GJButtonTitle.edit.description
       canEdit = false
     }else{
@@ -59,27 +71,33 @@ class GJContactDetailViewController: UIViewController, GJContactDeailViewProtoco
   }
   
   func updateDataOnSever() {
-    if shouldUpdateData(){
-      formatPostPayload(json: jsonData)
-      self.presenter?.sendDataToContactDetailView()
+    if shouldUpdateData() && self.jsonData.count > 0{
+      DispatchQueue.main.async {
+        self.activity.showActivityIndicatory(uiView: self.view)
+      }
+      formatPostPayload(json: jsonData, type: .RequestMethodPUT)
+      self.presenter?.sendDataToContactDetailView(contactId: (contactDetail?.id)!)
     }
   }
   func shouldUpdateData() -> Bool {
     for (_ , value) in self.jsonData {
-      if value.count < 1 {
-        return false
+      if value.count > 0 {
+        return true
       }
     }
-    return true
+    return false
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    activity = GJActivityView()
+    activity.showActivityIndicatory(uiView: self.view)
     self.presenter?.fetchContactsDetail(id: (contact?.contactId)!)
     tableView.addCellIdentifiers(["GJContactDetailCell"])
     // Do any additional setup after loading the view.
     tableView.contentInset = UIEdgeInsetsMake(310, 0, 0, 0)
     detailView = GJContactDetailVIew.initWithNIb()
+    detailView?.delegate = self
     view.addSubview(detailView!)
     addNotificationAndSetup()
   }
@@ -146,12 +164,7 @@ extension GJContactDetailViewController: UITableViewDataSource{
     let contactInfo = items[indexPath.row]
     cell.displayData(data: contactInfo, enabled: canEdit)
     cell.infoTextField.updateValue =  {[unowned self](textfield: GJTextField, string:String) in
-      if textfield.isValid {
-        self.jsonData[cell.titleLabel.text!] = string
-      }else{
-        self.jsonData[cell.titleLabel.text!] = ""
-      }
-      
+        self.jsonData[contactInfo.jsonKey] = string
     }
     cell.infoTextField.errorMessage = {[unowned self](textfield: GJTextField, string:String) in
       self.showErrorMessage(on: textfield, message: string)
@@ -188,8 +201,8 @@ extension GJContactDetailViewController: UIImagePickerControllerDelegate, UINavi
   {
     var  chosenImage = UIImage()
     chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-    //myImageView.contentMode = .scaleAspectFit
-    //myImageView.image = chosenImage 
+    detailView?.userImageView.contentMode = .scaleAspectFit
+    detailView?.userImageView.image = chosenImage
     dismiss(animated:true, completion: nil)
   }
   func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -218,6 +231,62 @@ extension GJContactDetailViewController: MFMessageComposeViewControllerDelegate{
   }
 
 }
+
+extension GJContactDetailViewController: MFMailComposeViewControllerDelegate{
+  func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+    controller.dismiss(animated: true)
+  }
+}
+
+extension GJContactDetailViewController: GJContactDetailDelegate, GJAlertDelegate{
+  func favouriteButtonClicked(){
+    
+  }
+  func emailButtonClicked(){
+    if let email = contactDetail?.email {
+      presenter?.router?.sendEmail(email: email)
+    }else{
+      showMessage(message: "Email is not available")
+    }
+    
+  }
+  func phoneButtonClicked(){
+    if let phoneNumber = contactDetail?.phone {
+      presenter?.router?.startTheCall(to: phoneNumber)
+    }else{
+      showMessage(message: "Phone number is not available")
+    }
+  }
+  func messageButtonClicked(){
+    if let phoneNumber = contactDetail?.phone {
+      presenter?.router?.sendEmail(email: phoneNumber)
+    }else{
+      showMessage(message: "Phone number is not available")
+    }
+    
+  }
+  func showMessage(message: String){
+    DispatchQueue.main.async {
+      GJAlertViewController.showAlert(withTitle: "Error", message:  message)
+    }
+  }
+
+  func cameraButtonClicked(){
+    GJAlertViewController.showAlert(withTitle: "GoJek", message: "Please choose", buttons: ["Camera", "Photo Library"], delegate: self)
+  }
+  
+  func alert(buttonClickedIndex:Int, buttonTitle: String, tag: Int){
+    if buttonTitle == "Camera" {
+      presenter?.router?.showCameraOrPhotoLibrary(type: .camera)
+    }else if buttonTitle == "Photo Library"{
+      presenter?.router?.showCameraOrPhotoLibrary(type: .library)
+    }
+  }
+}
+
+
+
+
 
 enum GJButtonTitle: String, CustomStringConvertible{
   case done = "Done"

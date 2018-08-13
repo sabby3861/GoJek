@@ -14,6 +14,7 @@ class GJContactsInteractor: GJContactsInteractorProtocol {
   var output: GJContactsOutputProtocol?
   func decodeJSONInformation(){
     guard let data = fetchFromStorage() else {
+      startDownloadingContacts()
       return
     }
     self.output?.contactInfoDidFetch(contactsInfo: data)
@@ -31,6 +32,7 @@ class GJContactsInteractor: GJContactsInteractorProtocol {
       case .failure(let missing):
         let error = missing.localizedDescription
         print("Description  \(error)")
+        self.output?.errorOccured()
         DispatchQueue.main.async {
           GJAlertViewController.showAlert(withTitle: "Error", message:  String(describing: missing))
         }
@@ -55,6 +57,9 @@ class GJContactsInteractor: GJContactsInteractorProtocol {
     let fetchRequest = NSFetchRequest<GJContactInfo>(entityName: GJCoreData.name.rawValue)
     do {
       let contacts = try managedObjectContext.fetch(fetchRequest)
+      guard contacts.count > 0 else {
+        return nil
+      }
       return contacts
     } catch let error {
       print(error)

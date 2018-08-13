@@ -9,11 +9,14 @@
 import UIKit
 
 protocol GJContactDetailDelegate:class {
-  //func orderNow(_ item:WSMenuChoice, _ image: UIImage, _ name: String)
-  func cancelNow()
+  func favouriteButtonClicked()
+  func emailButtonClicked()
+  func phoneButtonClicked()
+  func messageButtonClicked()
+  func cameraButtonClicked()
 }
 
-class GJContactDetailVIew: UIView {
+class GJContactDetailVIew: UIView, UIGestureRecognizerDelegate {
   
   weak var delegate: GJContactDetailDelegate?
  
@@ -41,22 +44,35 @@ class GJContactDetailVIew: UIView {
   }
   override func awakeFromNib(){
     super.awakeFromNib()
-    self.messageButton.set(image: #imageLiteral(resourceName: "message"), attributedTitle: NSAttributedString(string: "Message"), at: .bottom, width: 40, state: .normal)
-    self.phoneButton.set(image: #imageLiteral(resourceName: "phone"), attributedTitle: NSAttributedString(string: "Message"), at: .bottom, width: 40, state: .normal)
-    self.mailButton.set(image: #imageLiteral(resourceName: "mail"), attributedTitle: NSAttributedString(string: "Message"), at: .bottom, width: 40, state: .normal)
-    self.favouriteButton.set(image:#imageLiteral(resourceName: "favourite"), attributedTitle: NSAttributedString(string: "Message"), at: .bottom, width: 40, state: .normal)
+    self.messageButton.set(image: #imageLiteral(resourceName: "message"), attributedTitle: NSAttributedString(string: "message"), at: .bottom, width: 40, state: .normal)
+    self.phoneButton.set(image: #imageLiteral(resourceName: "phone"), attributedTitle: NSAttributedString(string: "call"), at: .bottom, width: 40, state: .normal)
+    self.mailButton.set(image: #imageLiteral(resourceName: "mail"), attributedTitle: NSAttributedString(string: "email"), at: .bottom, width: 40, state: .normal)
+    self.favouriteButton.set(image:#imageLiteral(resourceName: "favourite"), attributedTitle: NSAttributedString(string: "favourite"), at: .bottom, width: 40, state: .normal)
     
+    userImageView.isUserInteractionEnabled = true
+    let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(sender:)))
+    tap.delegate = self // This is not required
+    userImageView.addGestureRecognizer(tap)
   }
  
+  @objc func handleTap(sender: UITapGestureRecognizer? = nil) {
+    // handling code
+    delegate?.cameraButtonClicked()
+  }
+  
   @IBAction func favouriteButtonClicked(_ sender: Any) {
+    delegate?.favouriteButtonClicked()
   }
   
   @IBAction func emailButtonClicked() {
+    delegate?.emailButtonClicked()
   }
   
   @IBAction func phoneButtonClicked() {
+    delegate?.phoneButtonClicked()
   }
   @IBAction func messageButtonClicked() {
+    delegate?.messageButtonClicked()
   }
   
   

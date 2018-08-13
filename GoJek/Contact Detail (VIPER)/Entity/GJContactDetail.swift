@@ -32,3 +32,6 @@ struct GJContactDetail: Codable {
   }
 }
 
+struct GJContactUpdate: Codable {
+  let description: String
+}

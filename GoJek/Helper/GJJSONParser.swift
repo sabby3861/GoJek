@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
+typealias JSONDictionary = [String : Any]
 
 enum APIError: Error {
   case message(String)
@@ -106,11 +107,18 @@ struct GJContactDetailService {
 }
 
 struct GJContactUpdateService {
-  let service = JSONParser<GJContactDetail>(url: ServiceURL.ContactsService, parseJSON: { json in
+  let service = JSONParser<JSONDictionary>(url: ServiceURL.ContactsDetailService, parseJSON: { json in
     guard let data = json as? Data else {
       throw APIError.message("Unable to deconde the response")
     }
-    return  try  JSONDecoder().decode(GJContactDetail.self, from: data)
+    let json = try JSONSerialization.jsonObject(with: data, options: [])
+    print("Json is \(json)")
+    guard let dictionary = json as? JSONDictionary, dictionary["created_at"] as? String != nil else {
+      let error: [String: Any] = json as! [String : Any]
+      throw APIError.message("Unable to deconde the response")
+      
+    }
+    return  dictionary//try  JSONDecoder().decode(GJContactUpdate.self, from: data)
   })
 }
 

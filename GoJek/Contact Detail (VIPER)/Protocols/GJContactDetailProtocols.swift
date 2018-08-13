@@ -22,7 +22,7 @@ protocol GJContactDeailPresenterProtocol: class
   var router: GJContactDeailRouterProtocol? { get }
   var interactor: GJContactDeailInteractorProtocol?{get}
   func fetchContactsDetail(id: Int32)
-  func sendDataToContactDetailView()
+  func sendDataToContactDetailView(contactId: Int)
 }
 
 
@@ -31,7 +31,7 @@ protocol GJContactDeailInteractorProtocol: class
 {
   var output: GJContactDeailOutputProtocol? { get }
   func decodeJSONInformation(contactId: Int32)
-  func sendJSONInformation()
+  func sendJSONInformation(contactId: Int)
 }
 
 protocol GJContactDeailOutputProtocol: class
@@ -45,5 +45,8 @@ protocol GJContactDeailRouterProtocol: class
 {
   var viewController: GJContactDetailViewController? { get}
   static func assembleModule(view: GJContactDetailViewController, contact: GJContactInfo)
-  func showContactDetailView(contactInfo: GJContactInfo)
+  func showCameraOrPhotoLibrary(type: GJCameraType)
+  func sendMessage(recipient: String)
+  func sendEmail(email: String)
+  func startTheCall(to number: String)
 }

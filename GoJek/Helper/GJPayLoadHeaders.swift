@@ -9,7 +9,7 @@
 import Foundation
 protocol PayLoadFormat {
   func formatGetPayload()
-  func formatPostPayload(json: [String: Any] )
+  func formatPostPayload(json: [String: Any], type: GJHTTPPayloadType  )
 }
 extension PayLoadFormat{
   func formatGetPayload() {
@@ -18,8 +18,8 @@ extension PayLoadFormat{
     ServiceManager.payload = payload
   }
   
-  func formatPostPayload(json: [String: Any] ) {
-    var payload = GJHTTPPayload(payloadType: .RequestMethodPOST)
+  func formatPostPayload(json: [String: Any], type: GJHTTPPayloadType ) {
+    var payload = GJHTTPPayload(payloadType: type)
     let jsonData = try? JSONSerialization.data(withJSONObject: json)
     payload.jsonData = jsonData!
     payload.addHeader(name: GJHTTPHeaderType.contentType.rawValue, value: GJHTTPMimeType.applicationJSON.rawValue)
@@ -56,15 +56,18 @@ enum GJHTTPHeaderType: String{
 enum GJHTTPMethod: String {
   case get
   case post
+  case put
 }
 
 enum GJHTTPPayloadType{
   case RequestMethodGET
   case RequestMethodPOST
+  case RequestMethodPUT
   func httpMethod() -> String {
     switch self{
     case .RequestMethodGET: return GJHTTPMethod.get.rawValue
     case .RequestMethodPOST: return GJHTTPMethod.post.rawValue
+    case .RequestMethodPUT: return GJHTTPMethod.put.rawValue
     }
   }
 }

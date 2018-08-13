@@ -48,5 +48,9 @@
 	</dict>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>App requires photo access to upload on server</string>
+	<key>Privacy - Camera Usage Description  </key>
+	<string>App requires camera to click picture</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<string>tel</string>
 </dict>
 </plist>

@@ -29,6 +29,6 @@ extension GJContactsPresenter: GJContactsOutputProtocol{
     view?.showContactsInformation(with: contactsInfo)
   }
   func errorOccured(){
-    
+    view?.removeActivityView()
   }
 }

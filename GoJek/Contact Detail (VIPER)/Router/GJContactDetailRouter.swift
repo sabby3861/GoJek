@@ -27,10 +27,6 @@ class GJContactDetailRouter: GJContactDeailRouterProtocol {
     router.viewController = view
   }
   
-  func showContactDetailView(contactInfo: GJContactInfo) {
-    
-  }
-  
   func showCameraOrPhotoLibrary(type: GJCameraType) {
     let picker = UIImagePickerController()
     if type == GJCameraType.camera{
@@ -80,5 +76,17 @@ class GJContactDetailRouter: GJContactDeailRouterProtocol {
   
   func startTheCall(to number: String) {
     number.makeCall()
+  }
+  
+  func sendEmail(email: String){
+    if MFMailComposeViewController.canSendMail() {
+      let mail = MFMailComposeViewController()
+      mail.mailComposeDelegate = viewController
+      mail.setToRecipients([email])
+      mail.setMessageBody("<p>We Love GoJek!</p>", isHTML: true)
+            viewController?.present(mail, animated: true)
+    } else {
+      showErrorMessage(error: "This device does not support email service")
+    }
   }
 }

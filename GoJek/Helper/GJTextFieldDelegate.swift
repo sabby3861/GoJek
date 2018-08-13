@@ -21,7 +21,7 @@ extension GJTextField: GJTextFieldDelegate{
   public func textFieldDidEndEditing(_ textField: UITextField) {
     let wsTextField = textField as! GJTextField
     updateValue?(wsTextField, textField.text!)
-    validateTextField(textField)
+    _ = validateTextField(textField)
   }
   /*public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
     if shouldEndEditing == false{
