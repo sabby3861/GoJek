@@ -41,6 +41,7 @@ class GJContactDetailInteractor: GJContactDeailInteractorProtocol {
       switch result {
       case .success(let data):
         print("Data is \(data)")
+        self.output?.errorOccured()
         GJAlertViewController.showAlert(withTitle: "GoJek", message:  "Contact informations has been updated")
       case .failure(let missing):
         let error = missing.localizedDescription

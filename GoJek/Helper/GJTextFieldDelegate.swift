@@ -94,8 +94,6 @@ extension GJTextField: GJTextFieldDelegate{
     
     var result = GJValidationResult()
     switch type {
-    case .text:
-      result = GJValidator.validate(pattern: GJAlphabetsValidation.alphabetsOnly, forString: fullString)
     case .telephone:
       result = GJValidator.validate(pattern: GJNumericValidation.phoneNumber, forString: fullString)
     default:

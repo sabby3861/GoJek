@@ -49,19 +49,3 @@ class GJContactInfoCell: UITableViewCell {
     }
   }
 }
-
-protocol FBTimeManagement {
-  func getDate(timeStamp: Int, timeZone: String) -> String
-  var dateFormat: String? { get set }
-}
-extension FBTimeManagement{
-  func getDate(timeStamp: Int, timeZone: String) -> String {
-    let date = Date(timeIntervalSince1970: TimeInterval(timeStamp))
-    let dateFormatter = DateFormatter()
-    dateFormatter.timeZone = TimeZone(abbreviation: timeZone) //Set timezone that you want
-    dateFormatter.locale = NSLocale.current
-    dateFormatter.dateFormat = dateFormat//"HH:mm" //Specify your format that you want
-    let time = dateFormatter.string(from: date)
-    return time
-  }
-}

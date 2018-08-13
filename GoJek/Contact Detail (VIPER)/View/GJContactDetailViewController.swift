@@ -31,17 +31,15 @@ class GJContactDetailViewController: UIViewController, GJContactDeailViewProtoco
     
     var contactInfo = GJContactDetailInfo(key: "First Name", value: info.firstName, type: .userName, jsonKey: "first_name")
     items.append(contactInfo)
-    //self.jsonData["First Name"] = info.firstName
-    contactInfo = GJContactDetailInfo(key: "Last Name", value: info.lastName, type: .text, jsonKey: "last_name")
+    contactInfo = GJContactDetailInfo(key: "Last Name", value: info.lastName, type: .userName, jsonKey: "last_name")
     items.append(contactInfo)
-    //self.jsonData["Last Name"] = info.lastName
     contactInfo = GJContactDetailInfo(key: "mobile", value: info.phone != nil ? info.phone! : "", type: .telephone, jsonKey: "phone_number")
-    //self.jsonData["mobile"] = info.phone
     items.append(contactInfo)
     contactInfo = GJContactDetailInfo(key: "email", value: info.email != nil ? info.email! : "", type: .email, jsonKey: "email")
-    //self.jsonData["email"] = info.email
     items.append(contactInfo)
     self.contactDetail = info
+    let url = "\(baseUrl)\(contactDetail?.profilePic ?? "")"
+    detailView?.userImageView.loadImageUsingCacheWithURLString(url, placeHolder: #imageLiteral(resourceName: "NoImage"))
     DispatchQueue.main.async {
       self.activity.removeActivity()
       self.tableView.reloadData()
