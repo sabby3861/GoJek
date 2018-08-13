@@ -62,6 +62,11 @@ extension JSONParser {
     print("Url is \(url.description)")
     // create the url request
     self.request = URLRequest(url: url.description)
+    self.request.httpMethod = ServiceManager.payload?.type.httpMethod()
+    for (key, value) in (ServiceManager.payload?.headers)! {
+      self.request.setValue(value, forHTTPHeaderField: key)
+    }
+    self.request.httpBody = ServiceManager.payload?.jsonData
     self.parse = { data in
       return try parseJSON(data)
     }
@@ -99,6 +104,16 @@ struct GJContactDetailService {
     return  try  JSONDecoder().decode(GJContactDetail.self, from: data)
   })
 }
+
+struct GJContactUpdateService {
+  let service = JSONParser<GJContactDetail>(url: ServiceURL.ContactsService, parseJSON: { json in
+    guard let data = json as? Data else {
+      throw APIError.message("Unable to deconde the response")
+    }
+    return  try  JSONDecoder().decode(GJContactDetail.self, from: data)
+  })
+}
+
 
 enum ServiceURL {
   case ContactsService;

@@ -19,7 +19,7 @@ class GJContactsViewController: UIViewController, GJContactsViewProtocol {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
-    self.formatPayload(with: .RequestMethodGET)
+    self.formatGetPayload()
     self.presenter?.fetchContactsInformation()
     assert(self.presenter != nil, "Modules were not assembed correctly")
     
@@ -111,4 +111,8 @@ extension GJContactsViewController: UITableViewDelegate{
 }
 
 
-extension UIViewController: PayLoadFormat{}
+extension UIViewController: PayLoadFormat{
+  func showErrorMessage(on field: GJTextField, message:String)  {
+    GJInfoPopOverView.presentPopover(fromViewController: self , sourceView: field, message: message)
+  }
+}

@@ -8,12 +8,23 @@
 
 import Foundation
 protocol PayLoadFormat {
-  func formatPayload(with method: GJHTTPPayloadType)
+  func formatGetPayload()
+  func formatPostPayload(json: [String: Any] )
 }
 extension PayLoadFormat{
-  func formatPayload(with method: GJHTTPPayloadType) {
-    var payload = GJHTTPPayload(payloadType: method)
+  func formatGetPayload() {
+    var payload = GJHTTPPayload(payloadType: .RequestMethodGET)
     payload.addHeader(name: GJHTTPHeaderType.contentType.rawValue, value: GJHTTPMimeType.applicationJSON.rawValue)
+    ServiceManager.payload = payload
+  }
+  
+  func formatPostPayload(json: [String: Any] ) {
+    var payload = GJHTTPPayload(payloadType: .RequestMethodPOST)
+    let jsonData = try? JSONSerialization.data(withJSONObject: json)
+    payload.jsonData = jsonData!
+    payload.addHeader(name: GJHTTPHeaderType.contentType.rawValue, value: GJHTTPMimeType.applicationJSON.rawValue)
+    payload.addHeader(name: GJHTTPHeaderType.contentType.rawValue, value: GJHTTPMimeType.applicationJSON.rawValue)
+    ServiceManager.payload = nil
     ServiceManager.payload = payload
   }
 }
@@ -25,6 +36,7 @@ struct ServiceManager {
 struct GJHTTPPayload {
   var type: GJHTTPPayloadType!
   var headers = Dictionary<String, String>()
+  var jsonData = Data()
   
   fileprivate init(payloadType: GJHTTPPayloadType) {
     self.type = payloadType

@@ -44,4 +44,23 @@ class GJTableView: UITableView {
       register(nib, forHeaderFooterViewReuseIdentifier: identifier)
     }
   }
+  
+  func keyboardWillShow(notification:NSNotification)  {
+    adjustingHeight(show: true, notification: notification)
+  }
+  
+  func adjustingHeight(show:Bool, notification:NSNotification) {
+    if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+      
+      let changeInHeight = (keyboardSize.height + 40) * (show ? 1 : -1)
+      let contentInsets:UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height , changeInHeight)
+      self.contentInset = contentInsets
+      self.scrollIndicatorInsets = self.contentInset
+    }
+  }
+  
+  func keyboardWillHide(notification:NSNotification)  {
+    self.contentInset = defaultInset
+    self.scrollIndicatorInsets = .zero
+  }
 }
