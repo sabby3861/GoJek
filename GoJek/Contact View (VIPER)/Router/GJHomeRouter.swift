@@ -27,6 +27,9 @@ class GJContactsRouter: GJContactsRouterProtocol {
   }
   
   func showContactDetailView(contactInfo: GJContactInfo) {
-    
+    let storyboard = UIStoryboard.storyboard(storyboard: .Main)
+    let view: GJContactDetailViewController = storyboard.instantiateVieController()
+    _ = GJContactDetailRouter.assembleModule(view: view, contact: contactInfo)
+    viewController?.navigationController?.pushViewController(view, animated: true)
   }
 }

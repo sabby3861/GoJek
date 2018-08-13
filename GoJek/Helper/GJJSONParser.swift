@@ -91,11 +91,26 @@ struct GJContactService {
   })
 }
 
+struct GJContactDetailService {
+  let service = JSONParser<GJContactDetail>(url: ServiceURL.ContactsDetailService, parseJSON: { json in
+    guard let data = json as? Data else {
+      throw APIError.message("Unable to deconde the response")
+    }
+    return  try  JSONDecoder().decode(GJContactDetail.self, from: data)
+  })
+}
+
 enum ServiceURL {
   case ContactsService;
+  case ContactsDetailService;
   var description : URL {
     switch self {
     case .ContactsService: return URL(string: "\(baseUrl)/contacts.json")!;
+    case .ContactsDetailService: return URL(string: GJDetailUrl.url)!
     }
   }
+}
+
+struct GJDetailUrl {
+  static var url: String = ""
 }

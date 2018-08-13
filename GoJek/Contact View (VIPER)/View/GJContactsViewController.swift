@@ -101,6 +101,13 @@ extension GJContactsViewController: UITableViewDelegate{
   func numberOfSections(in tableView: UITableView) -> Int {
     return contactsSectionTitles.count
   }
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let contactKey = contactsSectionTitles[indexPath.section]
+    if let contactValues = contactsDictionary[contactKey] {
+      presenter?.sendDataToContactDetailView(info: contactValues[indexPath.row])
+    }
+    
+  }
 }
 
 

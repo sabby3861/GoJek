@@ -20,8 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let navigationController = self.window?.rootViewController as? UINavigationController
     let homeViewController = navigationController?.viewControllers.first as? GJContactsViewController
     GJContactsRouter.assembleModule(view: homeViewController!)
+  
+    navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Light", size: 19)!, NSAttributedStringKey.foregroundColor: UIColor(red: 55/255, green: 142/255, blue: 41/255, alpha: 1.0)]
     
-    navigationController?.navigationBar.barTintColor = UIColor(red: 55/255, green: 142/255, blue: 41/255, alpha: 1.0)
+    //132,205,185
     return true
   }
 

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="GJContactDetailCell" id="hXo-Xw-Xc7" userLabel="GJContactDetailCell" customClass="GJContactDetailCell" customModule="GoJek" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hXo-Xw-Xc7" id="Bsb-XA-cVl">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Testing here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nXV-iS-Nb9">
+                        <rect key="frame" x="7.5" y="24" width="115.5" height="16"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="115.5" id="sKV-M3-iRl"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="16"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="right" contentVerticalAlignment="center" text="dsdsd" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ON6-v2-iSx">
+                        <rect key="frame" x="145" y="17" width="214" height="30"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="ON6-v2-iSx" firstAttribute="trailing" secondItem="Bsb-XA-cVl" secondAttribute="trailingMargin" id="2dF-x1-mEV"/>
+                    <constraint firstItem="ON6-v2-iSx" firstAttribute="leading" secondItem="nXV-iS-Nb9" secondAttribute="trailing" constant="22" id="Bkr-ir-QYz"/>
+                    <constraint firstAttribute="bottom" secondItem="nXV-iS-Nb9" secondAttribute="bottom" constant="24.5" id="man-Gy-WRW"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="ON6-v2-iSx" secondAttribute="bottom" constant="7" id="pyF-VU-pcA"/>
+                    <constraint firstItem="nXV-iS-Nb9" firstAttribute="leading" secondItem="Bsb-XA-cVl" secondAttribute="leading" constant="7.5" id="vTO-Ny-Al2"/>
+                    <constraint firstItem="ON6-v2-iSx" firstAttribute="leading" secondItem="nXV-iS-Nb9" secondAttribute="trailing" constant="22" id="vhB-i3-KsP"/>
+                    <constraint firstItem="ON6-v2-iSx" firstAttribute="top" secondItem="Bsb-XA-cVl" secondAttribute="topMargin" constant="6" id="x61-Cq-3Ar"/>
+                    <constraint firstItem="nXV-iS-Nb9" firstAttribute="top" secondItem="Bsb-XA-cVl" secondAttribute="top" constant="24" id="zbd-Tu-aAP"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="infoTextField" destination="ON6-v2-iSx" id="Zhd-F5-j2T"/>
+                <outlet property="titleLabel" destination="nXV-iS-Nb9" id="BHL-iJ-Ig7"/>
+            </connections>
+            <point key="canvasLocation" x="95.5" y="59.5"/>
+        </tableViewCell>
+    </objects>
+</document>
