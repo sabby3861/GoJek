@@ -10,7 +10,7 @@ import UIKit
 class GJContactDetailCell: UITableViewCell {
   
   @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var infoTextField: UITextField!
+  @IBOutlet weak var infoTextField: GJTextField!
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -28,6 +28,7 @@ class GJContactDetailCell: UITableViewCell {
     titleLabel.text = data.key
     infoTextField.text = data.value
     infoTextField.isEnabled = enabled
+    infoTextField.type = data.type
   }
 }
 

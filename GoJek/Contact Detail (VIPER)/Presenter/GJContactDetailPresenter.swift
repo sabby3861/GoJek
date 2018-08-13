@@ -16,8 +16,8 @@ class GJContactDetailPresenter: GJContactDeailPresenterProtocol {
     interactor?.decodeJSONInformation(contactId: id)
   }
   
-  func sendDataToContactDetailView(info: GJContactInfo) {
-    
+  func sendDataToContactDetailView() {
+    interactor?.sendJSONInformation()
   }
   
   

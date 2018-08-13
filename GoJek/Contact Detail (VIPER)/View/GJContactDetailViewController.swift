@@ -9,16 +9,6 @@
 import UIKit
 import MessageUI
 
-enum GJFieldType{
-case number
-case email
-case text
-case password
-case telephone
-case userName
-case allChars
-case none
-}
 struct GJContactDetailInfo {
   var key:String
   var value:String
@@ -32,6 +22,7 @@ class GJContactDetailViewController: UIViewController, GJContactDeailViewProtoco
   var items:[GJContactDetailInfo] = [GJContactDetailInfo]()
   var canEdit = false
   var detailView: GJContactDetailVIew?
+  var jsonData = [String:String]()
   
   @IBOutlet weak var tableView: GJTableView!
   func showContactsInformation(with info: GJContactDetail) {
@@ -40,9 +31,9 @@ class GJContactDetailViewController: UIViewController, GJContactDeailViewProtoco
     items.append(contactInfo)
     contactInfo = GJContactDetailInfo(key: "Last Name", value: info.lastName, type: .text)
     items.append(contactInfo)
-    contactInfo = GJContactDetailInfo(key: "mobile", value: info.phone != nil ? info.phone! : "", type: .text)
+    contactInfo = GJContactDetailInfo(key: "mobile", value: info.phone != nil ? info.phone! : "", type: .telephone)
     items.append(contactInfo)
-    contactInfo = GJContactDetailInfo(key: "email", value: info.email != nil ? info.email! : "", type: .text)
+    contactInfo = GJContactDetailInfo(key: "email", value: info.email != nil ? info.email! : "", type: .email)
     items.append(contactInfo)
     DispatchQueue.main.async {
       self.tableView.reloadData()
@@ -66,16 +57,64 @@ class GJContactDetailViewController: UIViewController, GJContactDeailViewProtoco
       self.tableView.reloadData()
     }
   }
+  
+  func updateDataOnSever() {
+    if shouldUpdateData(){
+      formatPostPayload(json: jsonData)
+      self.presenter?.sendDataToContactDetailView()
+    }
+  }
+  func shouldUpdateData() -> Bool {
+    for (_ , value) in self.jsonData {
+      if value.count < 1 {
+        return false
+      }
+    }
+    return true
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.presenter?.fetchContactsDetail(id: (contact?.contactId)!)
     tableView.addCellIdentifiers(["GJContactDetailCell"])
     // Do any additional setup after loading the view.
-    tableView.contentInset = UIEdgeInsetsMake(300, 0, 0, 0)
+    tableView.contentInset = UIEdgeInsetsMake(310, 0, 0, 0)
     detailView = GJContactDetailVIew.initWithNIb()
     view.addSubview(detailView!)
+    addNotificationAndSetup()
   }
   
+  func addNotificationAndSetup()  {
+    NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+  }
+  
+  @objc func keyboardWillShow(notification:NSNotification)  {
+    adjustingHeight(show: true, notification: notification)
+  }
+  
+  func adjustingHeight(show:Bool, notification:NSNotification) {
+    
+    if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+      let changeInHeight = (keyboardSize.height - 64) * (show ? 1 : -1)
+      UIView.animate(withDuration: 0.25, delay: 0.0, options: [], animations: {
+        let frame = self.view.frame
+        self.view.frame = CGRect.init(x: frame.origin.x, y: -changeInHeight, width: frame.width, height: frame.height)
+      }, completion: { (finished: Bool) in
+        
+      })
+    }
+  }
+  @objc func keyboardWillHide(notification:NSNotification)  {
+    
+    UIView.animate(withDuration: 0.25, delay: 0.0, options: [], animations: {
+      let frame = self.view.frame
+      self.view.frame = CGRect.init(x: frame.origin.x, y: 0, width: frame.width, height: frame.height)
+    }, completion: { (finished: Bool) in
+      
+    })
+  }
+    
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
@@ -106,6 +145,17 @@ extension GJContactDetailViewController: UITableViewDataSource{
     let cell = tableView.dequeueReusableCell(withIdentifier: "GJContactDetailCell", for: indexPath) as! GJContactDetailCell
     let contactInfo = items[indexPath.row]
     cell.displayData(data: contactInfo, enabled: canEdit)
+    cell.infoTextField.updateValue =  {[unowned self](textfield: GJTextField, string:String) in
+      if textfield.isValid {
+        self.jsonData[cell.titleLabel.text!] = string
+      }else{
+        self.jsonData[cell.titleLabel.text!] = ""
+      }
+      
+    }
+    cell.infoTextField.errorMessage = {[unowned self](textfield: GJTextField, string:String) in
+      self.showErrorMessage(on: textfield, message: string)
+    }
     return cell
   }
 }
@@ -119,12 +169,10 @@ extension GJContactDetailViewController: UITableViewDelegate{
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat{
     return UITableViewAutomaticDimension
   }
-  func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
-  }
+ 
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    let y = 300 - (scrollView.contentOffset.y + 300)
-    let height = min(max(y, 60), 400)
+    let y = 310 - (scrollView.contentOffset.y + 310)
+    let height = min(max(y, 60), 310)
     if let detailView = detailView {
       detailView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: height)
     }

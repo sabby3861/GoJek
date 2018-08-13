@@ -22,7 +22,7 @@ protocol GJContactDeailPresenterProtocol: class
   var router: GJContactDeailRouterProtocol? { get }
   var interactor: GJContactDeailInteractorProtocol?{get}
   func fetchContactsDetail(id: Int32)
-  func sendDataToContactDetailView(info: GJContactInfo)
+  func sendDataToContactDetailView()
 }
 
 
@@ -31,6 +31,7 @@ protocol GJContactDeailInteractorProtocol: class
 {
   var output: GJContactDeailOutputProtocol? { get }
   func decodeJSONInformation(contactId: Int32)
+  func sendJSONInformation()
 }
 
 protocol GJContactDeailOutputProtocol: class

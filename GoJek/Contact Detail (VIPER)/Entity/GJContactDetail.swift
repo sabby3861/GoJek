@@ -16,6 +16,9 @@ struct GJContactDetail: Codable {
   let phone: String?
   let profilePic: String
   let favorite: Bool
+  let createdAt: String
+  let updatedAt: String
+  
   enum CodingKeys: String, CodingKey {
     case id = "id"
     case firstName = "first_name"
@@ -24,6 +27,8 @@ struct GJContactDetail: Codable {
     case phone = "phone_number"
     case profilePic = "profile_pic"
     case favorite = "favorite"
+    case createdAt = "created_at"
+    case updatedAt = "updated_at"
   }
 }
 
